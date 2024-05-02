@@ -10,10 +10,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Bienvenido de nuevo, {{ user.username }}</a>
 				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'cerrar-sesion' %}">Cerrar Sesión</a>
-				</li>
 			{% else %}
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a>
