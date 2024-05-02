@@ -63,6 +63,6 @@ class Registro(View):
 			)
 
 			login(request, user)
-			return redirect('')
+			return redirect('bienvenida')
 
 		return render(request, 'signup.html', {'form': form})
