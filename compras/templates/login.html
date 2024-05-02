@@ -1,0 +1,17 @@
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+	<div class="col-11 col-md-4 mx-auto mt-5">
+		<h1>Iniciar Sesión</h1>
+		<form method="post">
+			{% csrf_token %}
+			{{ form|crispy }}
+			<button class="btn btn-primary">Ingresar</button>
+		</form>
+		<div class="pt-3">
+			<small class="text-muted">Aún no estas registrado? <a href="{% url 'registro' %}" class="ml-2">Registrarse</a></small>
+		</div>
+	</div>
+</div>
+{% endblock content %}
