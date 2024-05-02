@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import Inicio,CrearOrden
 from django.contrib.auth import views as auth_views
-from .views import Registro
+from .views import Registro, Dashboard, CrearOrden
 
 urlpatterns = [
     path('', Inicio.as_view(), name='bienvenida'),
