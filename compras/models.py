@@ -28,3 +28,4 @@ class ItemProveedor(models.Model):
 	proveedor = models.CharField(max_length=255)
 	cantidad_por_unidad = models.CharField(max_length=100)
     unidades = models.IntegerField()
+	minimo_unidades = models.IntegerField()
