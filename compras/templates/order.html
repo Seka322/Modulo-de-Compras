@@ -14,7 +14,6 @@
 						$('#id_unidades').val(data.unidades);
 						$('#id_minimo_unidades').val(data.minimo_unidades);
 						$('#id_costo').val(data.costo);
-						$('#id_fecha_entrega').val(new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10));
 					}).fail(function() {
 						console.error('Error');
 					});
@@ -26,7 +25,7 @@
 	<div class="row">
 		<div class="col-11 col-md-4 mx-auto mt-5">
 			<h1>Crear Orden de Compra</h1>
-            
+            <div style="height: 50px;"></div>
             <form method="POST">
 				{% csrf_token %}
 				{{ form|crispy }}
@@ -37,4 +36,5 @@
 			</form>
 		</div>
 	</div>
+	<div style="height: 100px;"></div>
 {% endblock content %}

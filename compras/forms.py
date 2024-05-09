@@ -21,10 +21,20 @@ class CompraForm(forms.ModelForm):
             'producto': forms.TextInput(attrs={'type': 'text'}),
             'unidades': forms.NumberInput(attrs={'readonly': 'readonly'}),
             'minimo_unidades': forms.NumberInput(attrs={'readonly': 'readonly'}),
-            'costo': forms.NumberInput(attrs={'readonly': 'readonly'}),
+            'costo': forms.TextInput(attrs={'readonly': 'readonly', 'placeholder': 'S/. '}),
             'proveedor': forms.TextInput(attrs={'readonly': 'readonly'}),
             'cantidad': forms.NumberInput(attrs={'step': '1', 'readonly': 'readonly'}),
-            'costo_total': forms.NumberInput(attrs={'readonly': 'readonly'})
+            'costo_total': forms.TextInput(attrs={'readonly': 'readonly', 'placeholder': 'S/. '})
+        }
+        labels = {
+            'sucursal': 'Sucursal',
+            'producto': 'Producto',
+            'proveedor': 'Proveedor',
+            'unidades': 'Stock',
+            'minimo_unidades': 'Mínimo de Compra',
+            'costo': 'Precio por Unidad',
+            'cantidad': 'Cantidad a Ordenar',
+            'costo_total': 'Total'
         }
 
 class RegistroForm(UserCreationForm):
