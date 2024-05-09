@@ -18,7 +18,7 @@
 	{% endif %}
 	<div class="row">
 		<div class="col-md-10 col-12 mx-auto mt-5">
-            <h3 class="fw-light">Ordenes Pendientes</h3>
+            <h3 class="fw-light">Ordenes de Compra</h3>
 			<div class="d-flex justify-content-end">
 				<a href="{% url 'crear-orden' %}" class="btn btn-primary">+</a>
 			</div>
@@ -26,18 +26,21 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Item</th>
+						<th scope="col">Número de Orden</th>
+						<th scope="col">Producto</th>
+						<th scope="col">Cantidad</th>
 						<th scope="col">Sucursal</th>
-						<th scope="col">Cantidad Ordenada</th>
-						<th scope="col">Entrega Estimada</th>
-						<th scope="col">Total Orden de Compra</th>
+						<th scope="col">Proveedor</th>
+						<th scope="col">Ordenado el </th>
+						<th scope="col">Entrega Prevista</th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
 					{% if items|length == 0 %}
 					<tr>
-						<th scope="row">-</th>
+						<td scope="row">Sin Ordenes Pendientes de Entrega</td>
+						<td>-</td>
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
@@ -49,14 +52,13 @@
 					{% for item in items %}
 					<tr>
 						<th scope="row">{{ item.id }}</th>
-						<td>{{ item.name }}</td>
-						{% if item.id in low_inventory_ids %}
-							<td class="text-danger">{{ item.quantity }}</td>
-						{% else %}
-							<td class="text-success">{{ item.quantity }}</td>
-						{% endif %}
-						<td>{{ item.category.name }}</td>
-						<td><a href="{% url 'completar-orden' item.id %}" class="btn btn-secondary">Completar Orden</a></td>
+						<td>{{ item.producto }}</td>
+						<td>{{ item.cantidad }}</td>
+						<td>{{ item.sucursal.nombre }}</td>
+						<td>{{ item.proveedor }}</td>
+						<td>{{ item.fecha_orden }}</td>
+						<td>{{ item.fecha_entrega }}</td>
+						<td><a href="{% url 'eliminar-item' item.id %}" class="btn btn-secondary">Eliminar</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>
