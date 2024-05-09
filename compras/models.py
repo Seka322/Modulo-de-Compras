@@ -29,3 +29,4 @@ class ItemProveedor(models.Model):
 	cantidad_por_unidad = models.CharField(max_length=100)
     unidades = models.IntegerField()
 	minimo_unidades = models.IntegerField()
+	costo = models.DecimalField(max_digits=10, decimal_places=2)
