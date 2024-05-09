@@ -70,3 +70,16 @@ class Registro(View):
 			return redirect('dashboard')
 
 		return render(request, 'signup.html', {'form': form})
+
+def DetallesItem(request, item_id):
+    item = ItemProveedor.objects.filter(pk=item_id).first()
+    if item:
+        data = {
+            'proveedor': item.proveedor if item.proveedor else '',
+            'unidades': item.unidades,
+            'minimo_unidades': item.minimo_unidades,
+            'costo': item.costo,
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Item no encontrado'}, status=404)
