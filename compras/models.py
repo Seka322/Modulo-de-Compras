@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 class ItemCompra(models.Model):
 	sucursal = models.ForeignKey('Sucursal', on_delete=models.SET_NULL, blank=True, null=True)
