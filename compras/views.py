@@ -16,6 +16,10 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 	template_name = 'order.html'
 	success_url = reverse_lazy('dashboard')
 
+	def get_form_kwargs(self):
+		kwargs = super().get_form_kwargs()
+		kwargs['productos'] = ItemProveedor.objects.exclude(unidades=0)
+		return kwargs
 
 	def form_valid(self, form):
 		form.instance.user = self.request.user
