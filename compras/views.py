@@ -2,7 +2,7 @@ from django.views.generic import View, CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import CompraForm, RegistroForm
-from .models import ItemCompra, Categoria
+from .models import ItemCompra, ItemProveedor
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
