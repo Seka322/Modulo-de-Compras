@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class CompraForm(forms.ModelForm):
-	categoria = forms.ModelChoiceField(queryset=Categoria.objects.all(), initial=0)
-	sucursal = forms.ModelChoiceField(queryset=Sucursal.objects.all(), initial=0)
+	sucursal = forms.ModelChoiceField(queryset=Sucursal.objects.all(), required=True)
+    producto = forms.ModelChoiceField(queryset=ItemProveedor.objects.filter(unidades__gt=0), required=True)
 	class Meta:
 		model = ItemCompra
 		fields = ['nombre', 'cantidad', 'categoria', 'sucursal']
