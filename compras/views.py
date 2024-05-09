@@ -16,15 +16,19 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 	template_name = 'order.html'
 	success_url = reverse_lazy('dashboard')
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['categorias'] = Categoria.objects.all()
-		return context
-
+	def get_form_kwargs(self):
+		kwargs = super().get_form_kwargs()
+		kwargs['productos'] = ItemProveedor.objects.exclude(unidades=0)
+		return kwargs
+	
 	def form_valid(self, form):
 		form.instance.user = self.request.user
-		return super().form_valid(form)
-
+		response = super().form_valid(form)
+		producto = form.cleaned_data['producto']
+		cantidad = form.cleaned_data['cantidad']
+		ItemProveedor.objects.filter(item=producto).update(unidades=F('unidades') - cantidad)
+		return response
+	
 class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
 		items = ItemCompra.objects.filter(usuario=self.request.user.id).order_by('id')
@@ -66,3 +70,16 @@ class Registro(View):
 			return redirect('dashboard')
 
 		return render(request, 'signup.html', {'form': form})
+
+def DetallesItem(request, item_id):
+    item = ItemProveedor.objects.filter(pk=item_id).first()
+    if item:
+        data = {
+            'proveedor': item.proveedor if item.proveedor else '',
+            'unidades': item.unidades,
+            'minimo_unidades': item.minimo_unidades,
+            'costo': item.costo,
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'Item no encontrado'}, status=404)
