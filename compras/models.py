@@ -24,3 +24,4 @@ class Sucursal(models.Model):
 		return self.nombre
 	
 class ItemProveedor(models.Model):
+	item = models.CharField(max_length=255)
