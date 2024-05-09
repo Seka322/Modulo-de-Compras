@@ -30,3 +30,6 @@ class ItemProveedor(models.Model):
     unidades = models.IntegerField()
 	minimo_unidades = models.IntegerField()
 	costo = models.DecimalField(max_digits=10, decimal_places=2)
+	
+	def __str__(self):
+        	return self.item
