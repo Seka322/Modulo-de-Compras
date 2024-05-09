@@ -2,6 +2,7 @@ from django.urls import path
 from .views import Inicio,CrearOrden
 from django.contrib.auth import views as auth_views
 from .views import Registro, Dashboard, CrearOrden, EliminarItem
+from . import views
 
 urlpatterns = [
     path('', Inicio.as_view(), name='bienvenida'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('registro/', Registro.as_view(), name='registro'),
     path('cerrar-sesion/', auth_views.LogoutView.as_view(template_name='logout.html'), name='cerrar-sesion'),
     path('eliminar-item/<int:pk>', EliminarItem.as_view(), name='eliminar-item'),
+    path('detalles-item/<int:item_id>/', views.DetallesItem, name='detalles-item'),
 ]
