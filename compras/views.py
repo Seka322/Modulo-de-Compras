@@ -21,9 +21,7 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 		kwargs['productos'] = ItemProveedor.objects.exclude(unidades=0)
 		return kwargs
 
-	def form_valid(self, form):
-		form.instance.user = self.request.user
-		return super().form_valid(form)
+	
 
 class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
