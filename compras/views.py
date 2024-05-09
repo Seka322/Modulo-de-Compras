@@ -20,9 +20,15 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 		kwargs = super().get_form_kwargs()
 		kwargs['productos'] = ItemProveedor.objects.exclude(unidades=0)
 		return kwargs
-
 	
-
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		response = super().form_valid(form)
+		producto = form.cleaned_data['producto']
+		cantidad = form.cleaned_data['cantidad']
+		ItemProveedor.objects.filter(item=producto).update(unidades=F('unidades') - cantidad)
+		return response
+	
 class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
 		items = ItemCompra.objects.filter(usuario=self.request.user.id).order_by('id')
