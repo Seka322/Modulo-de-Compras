@@ -15,7 +15,7 @@ class CompraForm(forms.ModelForm):
 
     class Meta:
         model = ItemCompra
-        fields = ['sucursal', 'producto', 'proveedor', 'unidades', 'minimo_unidades', 'costo', 'cantidad', 'fecha_entrega'] 
+        fields = ['sucursal', 'producto', 'proveedor', 'unidades', 'minimo_unidades', 'costo', 'cantidad', 'costo_total'] 
         widgets = {
             'sucursal': forms.TextInput(attrs={'type': 'text'}),
             'producto': forms.TextInput(attrs={'type': 'text'}),
@@ -23,8 +23,8 @@ class CompraForm(forms.ModelForm):
             'minimo_unidades': forms.NumberInput(attrs={'readonly': 'readonly'}),
             'costo': forms.NumberInput(attrs={'readonly': 'readonly'}),
             'proveedor': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'cantidad': forms.NumberInput(attrs={'step': '1', 'min': '10'}),
-            'fecha_entrega': forms.DateInput(attrs={'type': 'date', 'readonly': 'readonly'})
+            'cantidad': forms.NumberInput(attrs={'step': '1', 'readonly': 'readonly'}),
+            'costo_total': forms.NumberInput(attrs={'readonly': 'readonly'})
         }
 
 class RegistroForm(UserCreationForm):
