@@ -52,14 +52,13 @@
 					{% for item in items %}
 					<tr>
 						<th scope="row">{{ item.id }}</th>
-						<td>{{ item.name }}</td>
-						{% if item.id in low_inventory_ids %}
-							<td class="text-danger">{{ item.quantity }}</td>
-						{% else %}
-							<td class="text-success">{{ item.quantity }}</td>
-						{% endif %}
-						<td>{{ item.category.name }}</td>
-						<td><a href="{% url 'completar-orden' item.id %}" class="btn btn-secondary">Completar Orden</a></td>
+						<td>{{ item.producto }}</td>
+						<td>{{ item.cantidad }}</td>
+						<td>{{ item.sucursal.nombre }}</td>
+						<td>{{ item.proveedor }}</td>
+						<td>{{ item.fecha_orden }}</td>
+						<td>{{ item.fecha_entrega }}</td>
+						<td><a href="{% url 'eliminar-item' item.id %}" class="btn btn-secondary">Eliminar</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>
