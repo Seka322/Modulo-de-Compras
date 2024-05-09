@@ -39,9 +39,9 @@ class Dashboard(LoginRequiredMixin, View):
 
 		if low_inventory.count() > 0:
 			if low_inventory.count() > 1:
-				messages.error(request, f'{low_inventory.count()} items tienen bajo inventario')
+				messages.error(request, f'{low_inventory.count()} productos tienen bajo inventario')
 			else:
-				messages.error(request, f'{low_inventory.count()} item tiene bajo inventario')
+				messages.error(request, f'{low_inventory.count()} producto tiene bajo inventario')
 
 		low_inventory_ids = ItemCompra.objects.filter(
 			usuario=self.request.user.id,
