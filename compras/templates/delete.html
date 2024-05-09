@@ -6,7 +6,12 @@
 		<div class="row">
 			<form method="POST" class="col-sm-11 col-md-4 mx-auto mt-5">
 				{% csrf_token %}
-				
+				<h1 class="fw-light">Estas seguro que deseas de eliminar la orden de compra para el producto '{{ item.producto }}'?</h1>
+				<p class="fw-light">Esto no se puede deshacer</p>
+
+				<div>
+					<button class="btn btn-danger">Eliminar</button>
+				</div>
 			</form>
 		</div>
 	</div>
