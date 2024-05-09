@@ -1,5 +1,13 @@
 {% extends 'index.html' %}
 
 {% block content %}
-	
+	<div>
+		<a href="{% url 'dashboard' %}" class="btn btn-outline-primary my-3 mx-4">Regresar</a>
+		<div class="row">
+			<form method="POST" class="col-sm-11 col-md-4 mx-auto mt-5">
+				{% csrf_token %}
+				
+			</form>
+		</div>
+	</div>
 {% endblock content %}
