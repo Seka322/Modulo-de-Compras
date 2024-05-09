@@ -44,7 +44,6 @@ class Dashboard(LoginRequiredMixin, View):
 				messages.error(request, f'{low_inventory.count()} producto tiene bajo inventario')
 
 		low_inventory_ids = ItemCompra.objects.filter(
-			usuario=self.request.user.id,
 			cantidad__lte=3
 		).values_list('id', flat=True)
 
