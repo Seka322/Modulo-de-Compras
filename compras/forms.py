@@ -1,5 +1,5 @@
 from django import forms
-from .models import Sucursal, Categoria, ItemCompra
+from .models import Sucursal, ItemCompra, ItemProveedor
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
