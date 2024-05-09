@@ -14,7 +14,6 @@ class ItemCompra(models.Model):
 	def __str__(self):
 		return self.producto
 	
-	
 class Sucursal(models.Model):
 	nombre = models.CharField(max_length=200)
 	direccion = models.CharField(max_length=200)
@@ -31,4 +30,4 @@ class ItemProveedor(models.Model):
 	costo = models.DecimalField(max_digits=10, decimal_places=2)
 	
 	def __str__(self):
-    	return self.item
+		return self.item
