@@ -10,7 +10,6 @@ class ItemCompra(models.Model):
 	costo_total = models.DecimalField(max_digits=10, decimal_places=2)
 	cantidad = models.IntegerField()
 	fecha_orden = models.DateTimeField(auto_now_add=True)
-	fecha_entrega = models.DateTimeField()
 
 	def __str__(self):
 		return self.producto
@@ -25,7 +24,6 @@ class Sucursal(models.Model):
 class ItemProveedor(models.Model):
 	item = models.CharField(max_length=255)
 	proveedor = models.CharField(max_length=255)
-	cantidad_por_unidad = models.CharField(max_length=100)
 	unidades = models.IntegerField()
 	minimo_unidades = models.IntegerField()
 	costo = models.DecimalField(max_digits=10, decimal_places=2)
