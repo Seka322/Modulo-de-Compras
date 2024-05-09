@@ -31,7 +31,7 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 	
 class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
-		items = ItemCompra.objects.filter(usuario=self.request.user.id).order_by('id')
+		items = ItemCompra.objects.order_by('id')
 
 		low_inventory = ItemCompra.objects.filter(
 			usuario=self.request.user.id,
