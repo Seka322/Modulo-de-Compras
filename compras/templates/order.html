@@ -28,7 +28,7 @@
 								cantidad = data.minimo_unidades;
 								$('#id_cantidad').val(cantidad);
 							}
-							
+
 							var total = cantidad * data.costo;
 							$('#id_costo_total').val(total.toFixed(2));
 						}
@@ -36,6 +36,25 @@
 						console.error('Error');
 					});
 				}
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('#id_cantidad').change(function() {
+				var cantidad = $(this).val();
+				cantidad = Math.round(cantidad);
+				$(this).val(cantidad);
+				var costo = $('#id_costo').val();
+				if (cantidad > $(this).attr('max')) {
+					cantidad = $(this).attr('max');
+					$(this).val(cantidad);
+				} else if (cantidad < $(this).attr('min')) {
+					cantidad = $(this).attr('min');
+					$(this).val(cantidad);
+				}
+				var total = cantidad * costo;
+				$('#id_costo_total').val(total.toFixed(2));
 			});
 		});
 	</script>
