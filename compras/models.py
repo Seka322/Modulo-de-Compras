@@ -26,3 +26,5 @@ class Sucursal(models.Model):
 class ItemProveedor(models.Model):
 	item = models.CharField(max_length=255)
 	proveedor = models.CharField(max_length=255)
+	cantidad_por_unidad = models.CharField(max_length=100)
+    unidades = models.IntegerField()
