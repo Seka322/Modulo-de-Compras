@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import CompraForm, RegistroForm
 from .models import ItemCompra, ItemProveedor
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
@@ -34,22 +33,7 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
 		items = ItemCompra.objects.order_by('id')
-
-		low_inventory = ItemCompra.objects.filter(
-			cantidad__lte=3
-		)
-
-		if low_inventory.count() > 0:
-			if low_inventory.count() > 1:
-				messages.error(request, f'{low_inventory.count()} productos tienen bajo inventario')
-			else:
-				messages.error(request, f'{low_inventory.count()} producto tiene bajo inventario')
-
-		low_inventory_ids = ItemCompra.objects.filter(
-			cantidad__lte=3
-		).values_list('id', flat=True)
-
-		return render(request, 'dashboard.html', {'items': items, 'low_inventory_ids': low_inventory_ids})
+		return render(request, 'dashboard.html', {'items': items})
 
 class Registro(View):
 	def get(self, request):
