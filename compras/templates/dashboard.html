@@ -26,13 +26,13 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Número de Orden</th>
+						<th scope="col">Nº de Orden</th>
+						<th scope="col">Sucursal</th>
 						<th scope="col">Producto</th>
 						<th scope="col">Cantidad</th>
-						<th scope="col">Sucursal</th>
+						<th scope="col">Total</th>
 						<th scope="col">Proveedor</th>
-						<th scope="col">Ordenado el </th>
-						<th scope="col">Entrega Prevista</th>
+						<th scope="col">Ordenado el</th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -52,12 +52,12 @@
 					{% for item in items %}
 					<tr>
 						<th scope="row">{{ item.id }}</th>
+						<td>{{ item.sucursal.nombre }}</td>
 						<td>{{ item.producto }}</td>
 						<td>{{ item.cantidad }}</td>
-						<td>{{ item.sucursal.nombre }}</td>
+						<td>{{ item.costo_total }}</td>
 						<td>{{ item.proveedor }}</td>
 						<td>{{ item.fecha_orden }}</td>
-						<td>{{ item.fecha_entrega }}</td>
 						<td><a href="{% url 'cancelar-orden' item.id %}" class="btn btn-secondary">Cancelar Compra</a></td>
 					</tr>
 					{% endfor %}
