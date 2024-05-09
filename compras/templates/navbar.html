@@ -10,6 +10,15 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Bienvenido de nuevo, {{ user.username }}</a>
 				</li>
+
+				<form id="logout-form" action="{% url 'cerrar-sesion' %}" method="post" style="display: none;">
+					{% csrf_token %}
+				</form>
+				<li class="nav-item">
+					<a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+						Cerrar Sesión
+					</a>
+				</li>
 			{% else %}
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a>
