@@ -14,6 +14,13 @@
 						$('#id_unidades').val(data.unidades);
 						$('#id_minimo_unidades').val(data.minimo_unidades);
 						$('#id_costo').val(data.costo);
+
+						$('#id_cantidad').removeAttr('readonly').attr('max', data.unidades).attr('min', data.minimo_unidades);
+						if ($('#id_cantidad').val()) {
+							var cantidad = $('#id_cantidad').val();
+							cantidad = Math.round(cantidad)
+							$('#id_cantidad').val(cantidad);
+						}
 					}).fail(function() {
 						console.error('Error');
 					});
