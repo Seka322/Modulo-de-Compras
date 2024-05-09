@@ -81,3 +81,9 @@ def DetallesItem(request, item_id):
         return JsonResponse(data)
     else:
         return JsonResponse({'error': 'Item no encontrado'}, status=404)
+
+class EliminarItem(LoginRequiredMixin, DeleteView):
+	model = ItemCompra
+	template_name = 'delete.html'
+	success_url = reverse_lazy('dashboard')
+	context_object_name = 'item'
