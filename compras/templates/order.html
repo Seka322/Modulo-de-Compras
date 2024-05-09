@@ -20,6 +20,17 @@
 							var cantidad = $('#id_cantidad').val();
 							cantidad = Math.round(cantidad)
 							$('#id_cantidad').val(cantidad);
+
+							if (cantidad > data.unidades) {
+								cantidad = data.unidades;
+								$('#id_cantidad').val(cantidad);
+							} else if (cantidad < data.minimo_unidades) {
+								cantidad = data.minimo_unidades;
+								$('#id_cantidad').val(cantidad);
+							}
+							
+							var total = cantidad * data.costo;
+							$('#id_costo_total').val(total.toFixed(2));
 						}
 					}).fail(function() {
 						console.error('Error');
