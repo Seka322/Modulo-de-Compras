@@ -58,7 +58,7 @@
 						<td>{{ item.proveedor }}</td>
 						<td>{{ item.fecha_orden }}</td>
 						<td>{{ item.fecha_entrega }}</td>
-						<td><a href="{% url 'eliminar-item' item.id %}" class="btn btn-secondary">Eliminar</a></td>
+						<td><a href="{% url 'cancelar-orden' item.id %}" class="btn btn-secondary">Cancelar Compra</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>

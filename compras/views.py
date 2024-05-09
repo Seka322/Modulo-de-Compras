@@ -84,7 +84,14 @@ def DetallesItem(request, item_id):
     else:
         return JsonResponse({'error': 'Item no encontrado'}, status=404)
 
-class EliminarItem(LoginRequiredMixin, DeleteView):
+class CancelarOrden(LoginRequiredMixin, DeleteView):
+	def post(self, request, *args, **kwargs):
+		item = ItemCompra.objects.get(pk=kwargs['pk'])
+		producto = item.producto
+		cantidad = item.cantidad
+		ItemProveedor.objects.filter(item=producto).update(unidades=F('unidades') + cantidad)
+		return super().delete(request, *args, **kwargs)
+
 	model = ItemCompra
 	template_name = 'delete.html'
 	success_url = reverse_lazy('dashboard')
