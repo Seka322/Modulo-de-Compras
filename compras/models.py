@@ -13,7 +13,7 @@ class ItemCompra(models.Model):
 	fecha_entrega = models.DateTimeField()
 
 	def __str__(self):
-		return self.nombre
+		return self.producto
 	
 class Categoria(models.Model):
     nombre = models.CharField(max_length=200)
