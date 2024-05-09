@@ -34,7 +34,6 @@ class Dashboard(LoginRequiredMixin, View):
 		items = ItemCompra.objects.order_by('id')
 
 		low_inventory = ItemCompra.objects.filter(
-			usuario=self.request.user.id,
 			cantidad__lte=3
 		)
 
