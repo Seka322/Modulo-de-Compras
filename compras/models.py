@@ -27,9 +27,9 @@ class ItemProveedor(models.Model):
 	item = models.CharField(max_length=255)
 	proveedor = models.CharField(max_length=255)
 	cantidad_por_unidad = models.CharField(max_length=100)
-    unidades = models.IntegerField()
+	unidades = models.IntegerField()
 	minimo_unidades = models.IntegerField()
 	costo = models.DecimalField(max_digits=10, decimal_places=2)
 	
 	def __str__(self):
-        	return self.item
+    	return self.item
