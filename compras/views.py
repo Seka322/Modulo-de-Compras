@@ -16,10 +16,6 @@ class CrearOrden(LoginRequiredMixin, CreateView):
 	template_name = 'order.html'
 	success_url = reverse_lazy('dashboard')
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['categorias'] = Categoria.objects.all()
-		return context
 
 	def form_valid(self, form):
 		form.instance.user = self.request.user
